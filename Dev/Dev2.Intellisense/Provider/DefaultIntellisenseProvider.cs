@@ -187,6 +187,7 @@ namespace Dev2.Studio.InterfaceImplementors
             }
             else
             {
+               
                 substr = string.IsNullOrEmpty(replace) ? inputText : inputText.Replace(replace, "");
             }
             
@@ -234,12 +235,15 @@ namespace Dev2.Studio.InterfaceImplementors
             var region = inputText.RegionInPostion(caretPosition);
             var regionName = region.Name ?? string.Empty;
 
-            if(DataListUtil.EndsWithClosingTags(regionName))
+            if (!DataListUtil.EndsWithClosingTags(inputText))//
             {
-                var indexOfClosingBracket = DataListUtil.IndexOfClosingTags(input);
-                indexOfClosingBracket = indexOfClosingBracket > 0 ? indexOfClosingBracket : 0;
-                input = input.Substring(0, indexOfClosingBracket);
-                caretPosition += 2;
+                if (DataListUtil.EndsWithClosingTags(regionName))
+                {
+                    var indexOfClosingBracket = DataListUtil.IndexOfClosingTags(input);
+                    indexOfClosingBracket = indexOfClosingBracket > 0 ? indexOfClosingBracket : 0;
+                    input = input.Substring(0, indexOfClosingBracket);
+                    caretPosition += 2;
+                }
             }
 
             string updatedInputText = inputText.Remove(replaceStringIndex, replace.Length)

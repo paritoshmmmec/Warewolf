@@ -22,6 +22,7 @@ using Dev2.Studio.Core;
 using Dev2.Studio.Core.Interfaces;
 using Dev2.Studio.Core.Interfaces.DataList;
 using Dev2.Studio.Core.Messages;
+using Dev2.Studio.InterfaceImplementors;
 using Dev2.Studio.ViewModels.DataList;
 using Dev2.UI;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -356,6 +357,23 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
             Assert.IsTrue(textBox.HasError);
 
         }
+        //WOLF-27
+        [TestMethod]
+        [Owner("Nkosinathi Sangweni")]
+        public void EnsureIntellisenseResults_GivenBracesDontMtch_ShouldHaveToolTipError()
+        {
+            //---------------Set up test pack-------------------
+            var textBox = new IntellisenseTextBox { FilterType = enIntellisensePartType.RecordsetFields, IntellisenseProvider = new DefaultIntellisenseProvider()};
+         
+            //---------------Assert Precondition----------------
+
+            //---------------Execute Test ----------------------
+            textBox.EnsureIntellisenseResults("[[rec().[[a]]", false, IntellisenseDesiredResultSet.Default);
+            //---------------Test Result -----------------------
+            Assert.IsTrue(textBox.HasError);
+        }
+
+        
 
         [TestMethod]
         [Owner("Massimo Guerrera")]
