@@ -85,20 +85,20 @@
     </Reference>
     <Reference Include="Caliburn.Micro, Version=1.4.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Binaries\Caliburn.Micro.dll</HintPath>
+      <HintPath>..\packages\Caliburn.Micro.1.4\lib\net40\Caliburn.Micro.dll</HintPath>
     </Reference>
     <Reference Include="CubicOrange.Windows.Forms.ActiveDirectory, Version=2.2.4395.25898, Culture=neutral, PublicKeyToken=4d9365c354fd6f36, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Binaries\CubicOrange.Windows.Forms.ActiveDirectory.dll</HintPath>
     </Reference>
     <Reference Include="FluentAssertions">
-      <HintPath>..\packages\FluentAssertions.3.3.0\lib\net45\FluentAssertions.dll</HintPath>
+      <HintPath>..\packages\FluentAssertions.3.4.0\lib\net45\FluentAssertions.dll</HintPath>
     </Reference>
     <Reference Include="FluentAssertions.Core">
-      <HintPath>..\packages\FluentAssertions.3.3.0\lib\net45\FluentAssertions.Core.dll</HintPath>
+      <HintPath>..\packages\FluentAssertions.3.4.0\lib\net45\FluentAssertions.Core.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\Binaries\log4net.dll</HintPath>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Office.Client.Policy">
@@ -360,9 +360,9 @@
       <Project>{1AD4F06F-BC1C-4C9E-8184-67EAE81C2279}</Project>
       <Name>Warewolf.Testing</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Warewolf.Tools.Specs\Warewolf.Tools.SpecTests.csproj">
+    <ProjectReference Include="..\Warewolf.ToolsSpecs\Warewolf.ToolsSpecs.csproj">
       <Project>{CAD4D820-C619-4099-AA9C-DCACD23ADB89}</Project>
-      <Name>Warewolf.Tools.SpecTests</Name>
+      <Name>Warewolf.ToolsSpecs</Name>
     </ProjectReference>
     <ProjectReference Include="..\WarewolfLanguageParser\WarewolfLanguageParser.fsproj">
       <Project>{E0F7C709-A61B-4829-A659-D7780052326A}</Project>

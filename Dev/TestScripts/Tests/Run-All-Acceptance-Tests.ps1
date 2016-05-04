@@ -1,6 +1,32 @@
-﻿# Create test settings.
+﻿$SolutionDir = (Get-Item $PSScriptRoot ).parent.parent.FullName
+# Read playlists and args.
+$TestList = ""
+if ($Args.Count -gt 0) {
+    $TestList = $Args.ForEach({ "," + $_ })
+} else {
+    Get-ChildItem "$PSScriptRoot" -Filter *.playlist | `
+    Foreach-Object{
+	    [xml]$playlistContent = Get-Content $_.FullName
+	    if ($playlistContent.Playlist.Add.count -gt 0) {
+	        foreach( $TestName in $playlistContent.Playlist.Add) {
+		        $TestList += "," + $TestName.Test.SubString($TestName.Test.LastIndexOf(".") + 1)
+	        }
+	    } else {        
+            if ($playlistContent.Playlist.Add.Test -ne $NULL) {
+                $TestList = " /Tests:" + $playlistContent.Playlist.Add.Test.SubString($playlistContent.Playlist.Add.Test.LastIndexOf(".") + 1)
+            } else {
+	            Write-Host Error parsing Playlist.Add from playlist file at $_.FullName
+	            Continue
+            }
+        }
+    }
+}
+if ($TestList.StartsWith(",")) {
+	$TestList = $TestList -replace "^.", " /Tests:"
+}
+
+# Create test settings.
 $TestSettingsFile = "$PSScriptRoot\LocalAcceptanceTesting.testsettings"
-$SolutionDir = (get-item $PSScriptRoot ).parent.parent.FullName
 [system.io.file]::WriteAllText($TestSettingsFile,  @"
 <?xml version=`"1.0`" encoding=`"UTF-8`"?>
 <TestSettings name=`"Local Acceptance Run`" id=`"3264dd0f-6fc1-4cb9-b44f-c649fef29609`" xmlns=`"http://microsoft.com/schemas/VisualStudio/TeamTest/2010`">
@@ -36,40 +62,17 @@ $SolutionDir = (get-item $PSScriptRoot ).parent.parent.FullName
 </TestSettings>
 "@)
 
-# Read playlists.
-$TestList = ""
-Get-ChildItem "$PSScriptRoot" -Filter *.playlist | `
-Foreach-Object{
-	[xml]$playlistContent = Get-Content $_.FullName
-	if ($playlistContent.Playlist.Add.count -gt 0) {
-	    foreach( $TestName in $playlistContent.Playlist.Add) {
-		    $TestList += "," + $TestName.Test.SubString($TestName.Test.LastIndexOf(".") + 1)
-	    }
-	} else {        
-        if ($playlistContent.Playlist.Add.Test -ne $null) {
-            $TestList = " /Tests:" + $playlistContent.Playlist.Add.Test.SubString($playlistContent.Playlist.Add.Test.LastIndexOf(".") + 1)
-        } else {
-	        Write-Host Error parsing Playlist.Add from playlist file at $_.FullName
-	        Continue
-        }
-    }
-}
-if ($TestList.StartsWith(",")) {
-	$TestList = $TestList -replace "^.", " /Tests:"
-}
-
-
 # Create assemblies list.
 $TestAssembliesList = ''
-foreach ($file in Get-ChildItem $SolutionDir | ? {$_.PSIsContainer -and ((($_.Name.StartsWith("Dev2.") -or $_.Name.StartsWith("Warewolf.")) -and $_.Name.EndsWith(".Specs")) -or $_.Name.StartsWith("Warewolf.AcceptanceTesting.")) -and $_.Name -ne "Dev2.Installer.Specs" -and $_.Name -ne "Warewolf.AcceptanceTesting.Scheduler"} ) {
-    $TestAssembliesList = "`"$SolutionDir\" + $file.Name + "\bin\Debug\" + $file.Name + ".dll`" " + $TestAssembliesList 
+foreach ($file in Get-ChildItem $SolutionDir -Include Dev2.*.Specs.dll, Warewolf.*.Specs.dll, Warewolf.AcceptanceTesting.*.dll -Exclude Dev2.Installer.Specs.dll -Recurse | Where-Object {-not $_.FullName.Contains("\obj\")} | Sort-Object -Property Name -Unique ) {
+    $TestAssembliesList = $TestAssembliesList + " `"" + $file.FullName + "`""
 }
 
 # Create full VSTest argument string.
-$FullArgsList = $TestAssembliesList + "/logger:trx /Settings:`"" + $TestSettingsFile + "`"" + $TestList
+$FullArgsList = $TestAssembliesList + " /logger:trx /Settings:`"" + $TestSettingsFile + "`"" + $TestList
 
 # Display full command including full argument string.
-Write-Host $SolutionDir> `"$env:vs120comntools..\IDE\CommonExtensions\Microsoft\TestWindow\VSTest.console.exe`" $FullArgsList
+Write-Host `"$env:vs120comntools..\IDE\CommonExtensions\Microsoft\TestWindow\VSTest.console.exe`"$FullArgsList
 
 # Run VSTest with full argument string.
 Start-Process -FilePath "$env:vs120comntools..\IDE\CommonExtensions\Microsoft\TestWindow\VSTest.console.exe" -ArgumentList @($FullArgsList) -verb RunAs -WorkingDirectory $SolutionDir -Wait

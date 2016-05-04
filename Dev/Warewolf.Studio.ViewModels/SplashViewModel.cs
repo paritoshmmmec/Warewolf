@@ -111,14 +111,96 @@ namespace Warewolf.Studio.ViewModels
         {
             Dispatcher.CurrentDispatcher.Invoke(() =>
             {
-                ServerVersion = "Version " + Server.GetServerVersion();
-                StudioVersion = "Version " + Utils.FetchVersionInfo();
-                //var serverVersionInformation = Server.GetServerInformationalVersion().Split(' ');
-                //ServerInformationalVersion = "Committed on " + serverVersionInformation[0] + " at " + serverVersionInformation[1] + " as " + serverVersionInformation[2];
-                //var studioVersionInformation = Utils.FetchInformationalVersionInfo().Split(' ');
-                //StudioInformationalVersion = "Committed on " + studioVersionInformation[0] + " at " + studioVersionInformation[1] + " as " + studioVersionInformation[2];
+                var serverVersion = Server.GetServerVersion();
+                if (serverVersion.StartsWith("0.0."))
+                {
+                    var splitServerVersion = serverVersion.Split('.');
+                    var totalDays = Convert.ToDouble(splitServerVersion[2]);
+                    var totalSeconds = Convert.ToDouble(splitServerVersion[3])*2;
+                    var CSharpEpoc = new DateTime(2000, 1, 1);
+                    var compileTIme = CSharpEpoc.AddDays(totalDays).AddSeconds(totalSeconds);
+                    ServerVersion = "Compiled " + GetInformalDate(compileTIme);
+                }
+                else
+                {
+                    ServerVersion = "Version " + serverVersion;
+                }
+                var studioVersion = Utils.FetchVersionInfo();
+                if (studioVersion.StartsWith("0.0."))
+                {
+                    var splitStudioVersion = studioVersion.Split('.');
+                    var totalDays = Convert.ToDouble(splitStudioVersion[2]);
+                    var totalSeconds = Convert.ToDouble(splitStudioVersion[3])*2;
+                    var cSharpEpoc = new DateTime(2000, 1, 1);
+                    var compileTIme = cSharpEpoc.AddDays(totalDays).AddSeconds(totalSeconds);
+                    StudioVersion = "Compiled " + GetInformalDate(compileTIme);
+                }
+                else
+                {
+                    StudioVersion = "Version " + studioVersion;
+                }
             });
-            
+        }
+
+        static string GetInformalDate(DateTime d)
+        {
+            var sinceThen = DateTime.Now.Subtract(d);
+            var totalDays = (int)sinceThen.TotalDays;
+            var totalHours = (int)sinceThen.TotalHours;
+            var totalMinutes = (int)sinceThen.TotalMinutes;
+            if (totalDays < 0 || totalHours < 0 || totalMinutes < 0)
+            {
+                return null;
+            }
+            if (totalMinutes == 0)
+            {
+                return "just Now";
+            }
+            if (totalMinutes == 1)
+            {
+                return "a minute ago";
+            }
+            if (totalHours == 0)
+            {
+                return string.Format("{0} minutes ago", totalMinutes);
+            }
+            if (totalHours == 1)
+            {
+                return "an hour ago";
+            }
+            if (totalDays == 0)
+            {
+                return string.Format("{0} hours ago", totalHours);
+            }
+            if (totalDays == 1)
+            {
+                return "yesterday";
+            }
+            if (totalDays < 7)
+            {
+                return string.Format("{0} days ago", totalDays);
+            }
+            if (totalDays < 14)
+            {
+                return "a week ago";
+            }
+            if (totalDays < 31)
+            {
+                return string.Format("{0} weeks ago", Math.Ceiling((double)totalDays / 7));
+            }
+            if (totalDays < 62)
+            {
+                return "a month ago";
+            }
+            if (totalDays < 365)
+            {
+                return string.Format("{0} months ago", Math.Ceiling((double)totalDays / 31));
+            }
+            if (totalDays < 730)
+            {
+                return "a year ago";
+            }
+            return string.Format("{0} years ago", Math.Ceiling((double)totalDays / 365));
         }
     }
 }
