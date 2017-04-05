@@ -3811,6 +3811,22 @@
                                                       <SupportLevel>0</SupportLevel>
                                                       <Descendants />
                                                     </UIObject>
+                                                    <UIObject ControlType="TreeItem" Id="SelectandapplyTreeItem" FriendlyName="Select and apply" SpecialControlType="None">
+                                                      <TechnologyName>UIA</TechnologyName>
+                                                      <WindowTitles>
+                                                        <WindowTitle>Warewolf (DEV2\NKOSINATHI.SANGWENI)</WindowTitle>
+                                                      </WindowTitles>
+                                                      <SearchConfigurations>
+                                                        <SearchConfiguration>Expand</SearchConfiguration>
+                                                      </SearchConfigurations>
+                                                      <AndCondition>
+                                                        <PropertyCondition Name="FrameworkId">WPF</PropertyCondition>
+                                                        <PropertyCondition Name="ControlType">TreeItem</PropertyCondition>
+                                                        <PropertyCondition Name="AutomationId">Step</PropertyCondition>
+                                                      </AndCondition>
+                                                      <SupportLevel>0</SupportLevel>
+                                                      <Descendants />
+                                                    </UIObject>
                                                   </Descendants>
                                                 </UIObject>
                                                 <UIObject ControlType="Edit" Id="StatusBar" FriendlyName="Dev2StatusBarAutomationID" SpecialControlType="None">
