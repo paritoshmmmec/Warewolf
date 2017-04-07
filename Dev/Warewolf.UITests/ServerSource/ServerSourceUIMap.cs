@@ -1,24 +1,15 @@
-﻿using Keyboard = Microsoft.VisualStudio.TestTools.UITesting.Keyboard;
-using System.Windows.Input;
-using MouseButtons = System.Windows.Forms.MouseButtons;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
-using System;
-using Microsoft.VisualStudio.TestTools.UITest.Extension;
+﻿using System;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Warewolf.UITests.WorkflowTab.WorkflowTabUIMapClasses;
 using Mouse = Microsoft.VisualStudio.TestTools.UITesting.Mouse;
 using System.Drawing;
-using System.IO;
 using TechTalk.SpecFlow;
-using Warewolf.UITests.Common;
 using Warewolf.UITests.Explorer.ExplorerUIMapClasses;
 using Warewolf.UITests.WorkflowServiceTesting.WorkflowServiceTestingUIMapClasses;
 using Warewolf.UITests.DialogsUIMapClasses;
 using Warewolf.UITests.Deploy.DeployUIMapClasses;
 using Warewolf.UITests.Settings.SettingsUIMapClasses;
-using Warewolf.UITests.ServerSource.ServerSourceUIMapClasses;
 
 namespace Warewolf.UITests.ServerSource.ServerSourceUIMapClasses
 {
@@ -143,13 +134,6 @@ namespace Warewolf.UITests.ServerSource.ServerSourceUIMapClasses
             Mouse.Click(UIMap.MainStudioWindow.ComboboxListItemAsHttp, new Point(31, 12));
             Assert.AreEqual("http", MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.ServerSourceTab.WorkSurfaceContext.NewServerSource.ProtocolCombobox.HttpSelectedItemText.DisplayText, "Server source wizard address protocol is not equal to http.");
             Assert.IsTrue(MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.ServerSourceTab.WorkSurfaceContext.NewServerSource.AddressComboBox.AddressEditBox.Exists, "Server source wizard address textbox does not exist");
-        }
-
-        [When(@"I Click Server Source Wizard Address Protocol Dropdown")]
-        public void Click_Server_Source_Wizard_Address_Protocol_Dropdown()
-        {
-            Mouse.Click(MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.ServerSourceTab.WorkSurfaceContext.NewServerSource.ProtocolCombobox.ToggleDropdown, new Point(54, 8));
-            Assert.IsTrue(UIMap.MainStudioWindow.ComboboxListItemAsHttp.Exists, "Http does not exist in server source wizard address protocol dropdown list.");
         }
 
         [When(@"I Click Server Source Wizard Test Connection Button")]
