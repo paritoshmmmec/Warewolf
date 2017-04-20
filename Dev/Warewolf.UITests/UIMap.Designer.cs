@@ -29,19 +29,6 @@ namespace Warewolf.UITests
     public partial class UIMap
     {
         
-        /// <summary>
-        /// RecordedMethod1
-        /// </summary>
-        public void RecordedMethod1()
-        {
-            #region Variable Declarations
-            WpfCustom uID7dccbadb86c4ae4afd4Custom = this.UIWarewolfASHASHWindow.UIWorkflowItemPresenteCustom.UIFlowchartCustom.UID7dccbadb86c4ae4afd4Custom;
-            #endregion
-
-            // Click 'd7dccbad-b86c-4ae4-afd4-05901b046de9,310;332 310;4...' custom control
-            Mouse.Click(uID7dccbadb86c4ae4afd4Custom, new Point(249, 403));
-        }
-        
         #region Properties
         public MainStudioWindow MainStudioWindow
         {
@@ -66,26 +53,12 @@ namespace Warewolf.UITests
                 return this.mUIWarewolfASHASHWindow;
             }
         }
-        
-        public UIWarewolfDEV2PIETERTEWindow UIWarewolfDEV2PIETERTEWindow
-        {
-            get
-            {
-                if ((this.mUIWarewolfDEV2PIETERTEWindow == null))
-                {
-                    this.mUIWarewolfDEV2PIETERTEWindow = new UIWarewolfDEV2PIETERTEWindow();
-                }
-                return this.mUIWarewolfDEV2PIETERTEWindow;
-            }
-        }
         #endregion
         
         #region Fields
         private MainStudioWindow mMainStudioWindow;
         
         private UIWarewolfASHASHWindow mUIWarewolfASHASHWindow;
-        
-        private UIWarewolfDEV2PIETERTEWindow mUIWarewolfDEV2PIETERTEWindow;
         #endregion
     }
     
@@ -10952,8 +10925,7 @@ namespace Warewolf.UITests
         {
             #region Search Criteria
             this.SearchProperties[WpfPane.PropertyNames.ClassName] = "Uia.CellsPanel";
-            this.SearchProperties[WpfPane.PropertyNames.Name] = "0";
-            this.SearchProperties[WpfPane.PropertyNames.Instance] = "2";
+            this.SearchProperties[WpfPane.PropertyNames.Name] = "1";
             this.WindowTitles.Add("Warewolf");
             #endregion
         }
@@ -19881,19 +19853,5 @@ namespace Warewolf.UITests
         #region Fields
         private WpfCustom mUID7dccbadb86c4ae4afd4Custom;
         #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "14.0.23107.0")]
-    public class UIWarewolfDEV2PIETERTEWindow : WpfWindow
-    {
-        
-        public UIWarewolfDEV2PIETERTEWindow()
-        {
-            #region Search Criteria
-            this.SearchProperties[WpfWindow.PropertyNames.Name] = "Warewolf (DEV2\\PIETER.TERBLANCHE)";
-            this.SearchProperties.Add(new PropertyExpression(WpfWindow.PropertyNames.ClassName, "HwndWrapper", PropertyExpressionOperator.Contains));
-            this.WindowTitles.Add("Warewolf (DEV2\\PIETER.TERBLANCHE)");
-            #endregion
-        }
     }
 }

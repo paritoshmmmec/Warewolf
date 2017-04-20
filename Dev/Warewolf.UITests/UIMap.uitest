@@ -40,26 +40,7 @@
     </Group>
   </Configuration>
   <InitializeActions />
-  <ExecuteActions>
-    <MouseAction UIObjectName="UIMap.UIWarewolfASHASHWindow.UIWorkflowItemPresenteCustom.UIFlowchartCustom.UID7dccbadb86c4ae4afd4Custom">
-      <ParameterName />
-      <ModifierKeys>None</ModifierKeys>
-      <IsGlobalHotkey>false</IsGlobalHotkey>
-      <Location X="249" Y="403" />
-      <WheelDirection>0</WheelDirection>
-      <ActionType>Click</ActionType>
-      <MouseButton>Left</MouseButton>
-    </MouseAction>
-    <TestStepMarkerAction Comment="" MarkerInformation="RecordedMethod1">
-      <ParameterName />
-      <StepId>-1</StepId>
-      <Direction>Start</Direction>
-      <Outcome />
-      <Disabled>false</Disabled>
-      <WorkItemId>0</WorkItemId>
-      <MarkerRegionType>Action</MarkerRegionType>
-    </TestStepMarkerAction>
-  </ExecuteActions>
+  <ExecuteActions />
   <CleanupActions />
   <OnErrorActions />
   <Maps>
@@ -5942,11 +5923,10 @@
                                 <WindowTitle>Warewolf</WindowTitle>
                               </WindowTitles>
                               <AndCondition>
-                                <PropertyCondition Name="FrameworkId">WPF</PropertyCondition>
                                 <PropertyCondition Name="ControlType">Pane</PropertyCondition>
+                                <PropertyCondition Name="FrameworkId">WPF</PropertyCondition>
                                 <PropertyCondition Name="ClassName">Uia.CellsPanel</PropertyCondition>
-                                <PropertyCondition Name="Name">0</PropertyCondition>
-                                <PropertyCondition Name="Instance">2</PropertyCondition>
+                                <PropertyCondition Name="Name">1</PropertyCondition>
                               </AndCondition>
                               <SupportLevel>0</SupportLevel>
                               <Descendants>
@@ -11541,20 +11521,6 @@
               </Descendants>
             </UIObject>
           </Descendants>
-        </TopLevelWindow>
-        <TopLevelWindow ControlType="Window" Id="UIWarewolfDEV2PIETERTEWindow" FriendlyName="Warewolf (DEV2\PIETER.TERBLANCHE)" SpecialControlType="None" SessionId="88610234">
-          <TechnologyName>UIA</TechnologyName>
-          <WindowTitles>
-            <WindowTitle>Warewolf (DEV2\PIETER.TERBLANCHE)</WindowTitle>
-          </WindowTitles>
-          <AndCondition>
-            <PropertyCondition Name="ControlType">Window</PropertyCondition>
-            <PropertyCondition Name="Name">Warewolf (DEV2\PIETER.TERBLANCHE)</PropertyCondition>
-            <PropertyCondition Name="FrameworkId">WPF</PropertyCondition>
-            <PropertyCondition Name="ClassName" Operator="Contains">HwndWrapper</PropertyCondition>
-          </AndCondition>
-          <SupportLevel>0</SupportLevel>
-          <Descendants />
         </TopLevelWindow>
       </TopLevelWindows>
     </UIMap>

@@ -1344,6 +1344,12 @@ namespace Warewolf.UITests.WorkflowTab.WorkflowTabUIMapClasses
             Mouse.Click(MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.WorkflowTab.WorkSurfaceContext.WorkflowDesignerView.DesignerView.ScrollViewerPane.ActivityTypeDesigner.WorkflowItemPresenter.Flowchart.Adornert_numbernText.NumbernHyperlink, MouseButtons.Right, ModifierKeys.None, new Point(88, 12));
         }
 
+        [Then(@"Ardoner Does not Throw exception")]
+        public void ThenArdonerDoesNotThrowException()
+        {
+            Assert.IsTrue(MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.WorkflowTab.WorkSurfaceContext.WorkflowDesignerView.DesignerView.ScrollViewerPane.ActivityTypeDesigner.WorkflowItemPresenter.Flowchart.Adornert_numbernText.NumbernHyperlink.Exists, "Adorner hyperlink is not in View.");
+        }
+
         [When(@"I Drag Start Node")]
         public void Drag_Start_Node()
         {

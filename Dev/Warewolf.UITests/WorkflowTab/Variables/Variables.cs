@@ -65,8 +65,8 @@ namespace Warewolf.UITests
             Mouse.Move(WorkflowTabUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.WorkflowTab.ContentPane.ContentDockManager.SplitPaneRight.Variables.DatalistView.VariableTree.RecordsetTreeItem.TreeItem1.InputCheckbox, new Point(10, 10));
             Mouse.Click();
             UIMap.Press_F5_To_Debug();
-            UIMap.Enter_Text_Into_Debug_Input_Row1_Value_Textbox("Bob");
-            UIMap.Click_Cancel_DebugInput_Window();
+            Assert.IsTrue(UIMap.MainStudioWindow.DebugInputDialog.TabItemsTabList.InputDataTab.InputsTable.Row1.Exists);
+            Assert.IsTrue(UIMap.MainStudioWindow.DebugInputDialog.TabItemsTabList.InputDataTab.InputsTable.Row2.Exists);
         }
 
         [TestMethod]
