@@ -74,10 +74,24 @@ namespace Warewolf.UITests.Scheduler.SchedulerUIMapClasses
                 return this.mDockManager;
             }
         }
+        
+        public SplitPane SplitPane
+        {
+            get
+            {
+                if ((this.mSplitPane == null))
+                {
+                    this.mSplitPane = new SplitPane(this);
+                }
+                return this.mSplitPane;
+            }
+        }
         #endregion
         
         #region Fields
         private DockManager mDockManager;
+        
+        private SplitPane mSplitPane;
         #endregion
     }
     
@@ -833,6 +847,270 @@ namespace Warewolf.UITests.Scheduler.SchedulerUIMapClasses
         private WpfCheckBox mEnableOrDisableCheckBox;
         
         private WpfButton mEraseScheduleButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "14.0.23107.0")]
+    public class SplitPane : WpfCustom
+    {
+        
+        public SplitPane(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfControl.PropertyNames.ClassName] = "Uia.SplitPane";
+            this.SearchProperties[WpfControl.PropertyNames.AutomationId] = "UI_SplitPane_AutoID";
+            this.WindowTitles.Add("Warewolf (DEV2\\SANELE.MTHEMBU)");
+            #endregion
+        }
+        
+        #region Properties
+        public TabManager TabManager
+        {
+            get
+            {
+                if ((this.mTabManager == null))
+                {
+                    this.mTabManager = new TabManager(this);
+                }
+                return this.mTabManager;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private TabManager mTabManager;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "14.0.23107.0")]
+    public class TabManager : WpfTabList
+    {
+        
+        public TabManager(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfTabList.PropertyNames.AutomationId] = "UI_TabManager_AutoID";
+            this.WindowTitles.Add("Warewolf (DEV2\\SANELE.MTHEMBU)");
+            #endregion
+        }
+        
+        #region Properties
+        public SettingsScheduleTab SettingsScheduleTab
+        {
+            get
+            {
+                if ((this.mSettingsScheduleTab == null))
+                {
+                    this.mSettingsScheduleTab = new SettingsScheduleTab(this);
+                }
+                return this.mSettingsScheduleTab;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private SettingsScheduleTab mSettingsScheduleTab;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "14.0.23107.0")]
+    public class SettingsScheduleTab : WpfTabPage
+    {
+        
+        public SettingsScheduleTab(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfTabPage.PropertyNames.Name] = "Dev2.Settings.Scheduler.SchedulerViewModel";
+            this.WindowTitles.Add("Warewolf (DEV2\\SANELE.MTHEMBU)");
+            #endregion
+        }
+        
+        #region Properties
+        public StudioViewModel StudioViewModel
+        {
+            get
+            {
+                if ((this.mStudioViewModel == null))
+                {
+                    this.mStudioViewModel = new StudioViewModel(this);
+                }
+                return this.mStudioViewModel;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private StudioViewModel mStudioViewModel;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "14.0.23107.0")]
+    public class StudioViewModel : WpfCustom
+    {
+        
+        public StudioViewModel(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfControl.PropertyNames.ClassName] = "Uia.ContentPane";
+            this.SearchProperties[WpfControl.PropertyNames.AutomationId] = "Dev2.Studio.ViewModels.WorkSurface.WorkSurfaceContextViewModel";
+            this.WindowTitles.Add("Warewolf (DEV2\\SANELE.MTHEMBU)");
+            #endregion
+        }
+        
+        #region Properties
+        public ContentDockManager ContentDockManager
+        {
+            get
+            {
+                if ((this.mContentDockManager == null))
+                {
+                    this.mContentDockManager = new ContentDockManager(this);
+                }
+                return this.mContentDockManager;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private ContentDockManager mContentDockManager;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "14.0.23107.0")]
+    public class ContentDockManager : WpfCustom
+    {
+        
+        public ContentDockManager(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfControl.PropertyNames.ClassName] = "Uia.XamDockManager";
+            this.SearchProperties[WpfControl.PropertyNames.AutomationId] = "ContentDockManager";
+            this.WindowTitles.Add("Warewolf (DEV2\\SANELE.MTHEMBU)");
+            #endregion
+        }
+        
+        #region Properties
+        public SchedulerView1 SchedulerView
+        {
+            get
+            {
+                if ((this.mSchedulerView == null))
+                {
+                    this.mSchedulerView = new SchedulerView1(this);
+                }
+                return this.mSchedulerView;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private SchedulerView1 mSchedulerView;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "14.0.23107.0")]
+    public class SchedulerView1 : WpfCustom
+    {
+        
+        public SchedulerView1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfControl.PropertyNames.ClassName] = "Uia.SchedulerView";
+            this.SearchProperties[WpfControl.PropertyNames.AutomationId] = "UI_SchedulerView_AutoID";
+            this.WindowTitles.Add("Warewolf (DEV2\\SANELE.MTHEMBU)");
+            #endregion
+        }
+        
+        #region Properties
+        public Schedules Schedules
+        {
+            get
+            {
+                if ((this.mSchedules == null))
+                {
+                    this.mSchedules = new Schedules(this);
+                }
+                return this.mSchedules;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private Schedules mSchedules;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "14.0.23107.0")]
+    public class Schedules : WpfList
+    {
+        
+        public Schedules(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfList.PropertyNames.AutomationId] = "Schedules";
+            this.WindowTitles.Add("Warewolf (DEV2\\SANELE.MTHEMBU)");
+            #endregion
+        }
+        
+        #region Properties
+        public HelloWorld HelloWorld
+        {
+            get
+            {
+                if ((this.mHelloWorld == null))
+                {
+                    this.mHelloWorld = new HelloWorld(this);
+                }
+                return this.mHelloWorld;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HelloWorld mHelloWorld;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "14.0.23107.0")]
+    public class HelloWorld : WpfListItem
+    {
+        
+        public HelloWorld(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfListItem.PropertyNames.Name] = "Name:Hello World ResourceId:acb75027-ddeb-47d7-814e-a54c37247ec1";
+            this.WindowTitles.Add("Warewolf (DEV2\\SANELE.MTHEMBU)");
+            #endregion
+        }
+        
+        #region Properties
+        public WpfButton DeleteSchedule
+        {
+            get
+            {
+                if ((this.mDeleteSchedule == null))
+                {
+                    this.mDeleteSchedule = new WpfButton(this);
+                    #region Search Criteria
+                    this.mDeleteSchedule.SearchProperties[WpfButton.PropertyNames.Name] = "?";
+                    this.mDeleteSchedule.WindowTitles.Add("Warewolf (DEV2\\SANELE.MTHEMBU)");
+                    #endregion
+                }
+                return this.mDeleteSchedule;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WpfButton mDeleteSchedule;
         #endregion
     }
 }
